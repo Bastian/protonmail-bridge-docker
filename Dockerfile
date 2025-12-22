@@ -26,6 +26,7 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 RUN useradd -m -s /bin/bash bridge
 USER bridge
 WORKDIR /home/bridge
+ENV HOME=/home/bridge
 
 ENTRYPOINT ["/usr/bin/tini", "--", "/usr/local/bin/entrypoint.sh"]
 CMD ["protonmail-bridge", "--cli"]
