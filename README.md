@@ -76,10 +76,12 @@ docker run -it --name proton-bridge \
 
 ## Ports
 
-| Container Port | Protocol |
-| -------------- | -------- |
-| 1143           | IMAP     |
-| 1025           | SMTP     |
+| Container Port | Protocol | Notes                                      |
+| -------------- | -------- | ------------------------------------------ |
+| 1144           | IMAP     | External port (socat forwards to 1143)     |
+| 1026           | SMTP     | External port (socat forwards to 1025)     |
+
+Connect from other containers using `protonmail-bridge:1144` (IMAP) and `protonmail-bridge:1026` (SMTP).
 
 ## Volumes
 

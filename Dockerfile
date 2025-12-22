@@ -17,7 +17,7 @@ RUN set -eux; \
     apt-get update && apt-get install -y /tmp/bridge.deb; \
     rm -rf /var/lib/apt/lists/* /tmp/bridge.deb
 
-RUN apt-get update && apt-get install -y --no-install-recommends gnupg2 pass tini \
+RUN apt-get update && apt-get install -y --no-install-recommends gnupg2 pass tini socat \
     && rm -rf /var/lib/apt/lists/*
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
