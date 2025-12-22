@@ -24,7 +24,7 @@ mkdir -p ./proton_state
 docker run -it --name proton-bridge \
     -v ./proton_state:/home/bridge \
     --user "$(id -u):$(id -g)" \
-    protonmail-bridge
+    protonmail-bridge protonmail-bridge --cli
 ```
 
 ### 3. Log In
@@ -61,7 +61,7 @@ docker run -d --name proton-bridge \
     -v ./proton_state:/home/bridge \
     --user "$(id -u):$(id -g)" \
     --restart unless-stopped \
-    protonmail-bridge --cli --noninteractive
+    protonmail-bridge
 ```
 
 To access the CLI later (e.g., to check credentials), stop the container and run interactively again:
@@ -71,7 +71,7 @@ docker rm -f proton-bridge
 docker run -it --name proton-bridge \
     -v ./proton_state:/home/bridge \
     --user "$(id -u):$(id -g)" \
-    protonmail-bridge
+    protonmail-bridge protonmail-bridge --cli
 ```
 
 ## Ports

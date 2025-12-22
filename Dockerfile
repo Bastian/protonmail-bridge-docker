@@ -29,4 +29,6 @@ WORKDIR /home/bridge
 ENV HOME=/home/bridge
 
 ENTRYPOINT ["/usr/bin/tini", "--", "/usr/local/bin/entrypoint.sh"]
-CMD ["protonmail-bridge", "--cli"]
+# Default: headless daemon mode
+# Override with: protonmail-bridge --cli (for interactive setup)
+CMD ["/usr/lib/protonmail/bridge/bridge", "--noninteractive"]
