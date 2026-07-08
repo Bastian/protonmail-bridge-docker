@@ -1,6 +1,6 @@
 FROM debian:bookworm-slim
 
-RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates wget \
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates wget gnupg2 pass tini socat \
     && rm -rf /var/lib/apt/lists/*
 
 ARG BRIDGE_VER=3.21.2-1
@@ -16,9 +16,6 @@ RUN set -eux; \
     fi; \
     apt-get update && apt-get install -y /tmp/bridge.deb; \
     rm -rf /var/lib/apt/lists/* /tmp/bridge.deb
-
-RUN apt-get update && apt-get install -y --no-install-recommends gnupg2 pass tini socat \
-    && rm -rf /var/lib/apt/lists/*
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
