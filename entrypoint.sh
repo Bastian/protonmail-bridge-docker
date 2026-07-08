@@ -16,8 +16,8 @@ Expire-Date: 0
 EOF
   gpg --batch --gen-key /tmp/genkey
   rm -f /tmp/genkey
-  # Get the key ID and initialize pass with it
-  GPG_KEY_ID=$(gpg --list-keys --keyid-format LONG "vault@local" | grep -E "^      " | head -1 | tr -d ' ')
+  # Get the key fingerprint and initialize pass with it
+  GPG_KEY_ID=$(gpg --list-keys --with-colons "vault@local" | awk -F: '/^fpr/{print $10; exit}')
   pass init "$GPG_KEY_ID"
 fi
 
